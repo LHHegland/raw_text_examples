@@ -24,13 +24,12 @@
 '''
 
 examples = []
-expected_results = []
 
 examples.append('This is a line of processed text.\nThis is another line of text.')
 examples.append(r'This is a line of raw text.\nThis is another line of text.')
 
 examples.append(r'D:\path\to\dir\filename.ext (raw)')
-examples.append('D:\path\to\dir\filename.ext (raw)') # SyntaxError: invalid escape sequence (\p) in string literal
+examples.append('D:\path\to\dir\filename.ext (raw)') # SyntaxError: invalid escape sequence (\p and \d) in string literal
                                                      # and interprets \t as tab and \f as form feed
 examples.append('D:\\path\\to\\dir\\filename.ext (processed)')
 
