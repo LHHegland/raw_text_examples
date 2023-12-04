@@ -30,11 +30,12 @@ examples.append('This is a line of processed text.\nThis is another line of text
 examples.append(r'This is a line of raw text.\nThis is another line of text.')
 
 examples.append(r'D:\path\to\dir\filename.ext (raw)')
-examples.append('D:\path\to\dir\filename.ext (raw)') # -> SyntaxError: invalid escape sequences in string literal
+examples.append('D:\path\to\dir\filename.ext (raw)') # SyntaxError: invalid escape sequence (\p) in string literal
+                                                     # and interprets \t as tab and \f as form feed
 examples.append('D:\\path\\to\\dir\\filename.ext (processed)')
 
 examples.append(r'\A(.+)[.]+page[ ]\d+') # e.g.: chapter title.........page 34
-examples.append('\A(.+)[.]+page[ ]\d+')  # -> SyntaxError: invalid escape sequences in string literal
+examples.append('\A(.+)[.]+page[ ]\d+')  # -> SyntaxError: invalid escape sequences (\A and \d) in string literal
 examples.append('\\A(.+)[.]+page[ ]\\d+')
 
 for index in range(len(examples)):
@@ -46,7 +47,7 @@ import re
 
 string_to_search = 'Everything Works Well.............page 47'
 pattern_example1 = re.compile(r'\A([^.]+(?=[.]+))([.]+page )(\d+)')
-pattern_example2 = re.compile('\A([^.]+(?=[.]+))([.]+page )(\d+)') # -> SyntaxError: invalid escape sequences in string literal
+pattern_example2 = re.compile('\A([^.]+(?=[.]+))([.]+page )(\d+)') # -> SyntaxError: invalid escape sequences (\A and \d) in string literal
 pattern_example3 = re.compile('\\A([^.]+(?=[.]+))([.]+page )(\\d+)')
 
 print(f'string_to_search: {string_to_search}\n')
